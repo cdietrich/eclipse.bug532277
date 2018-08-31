@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>bug532277</groupId>
+	<artifactId>bug532277.test</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>eclipse-test-plugin</packaging>
+	
+	<repositories>
+		<repository>
+			<id>swtbot</id>
+			<url>http://download.eclipse.org/technology/swtbot/snapshots</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>eclipse</id>
+			<url>http://download.eclipse.org/releases/2018-09</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>1.2.0</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>tycho-surefire-plugin</artifactId>
+            <version>1.2.0</version>
+            <configuration>
+              <useUIHarness>true</useUIHarness>
+              <useUIThread>false</useUIThread>
+              <product>org.eclipse.sdk.ide</product>
+              <application>org.eclipse.ui.ide.workbench</application>
+            </configuration>
+        </plugin>
+		</plugins>
+	</build>
+</project>
